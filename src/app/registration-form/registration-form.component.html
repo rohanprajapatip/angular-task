@@ -1,0 +1,48 @@
+<h1 class="title">Registration Form</h1>
+
+<div class="registration-form">
+  <form [formGroup]="registrationForm">
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" formControlName="name" />
+        @if(registrationForm.get('name')?.hasError('required')) {
+        <mat-error>Name is required</mat-error>
+        } @if(registrationForm.get('name')?.hasError('minlength')) {
+        <mat-error>Name must be at least 3 characters long</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Name" formControlName="email" />
+        @if ( registrationForm.get('email')?.hasError('email') &&
+        !registrationForm.get('email')?.hasError('required')) {
+        <mat-error> Please enter valid email address. </mat-error>
+        } @if (registrationForm.get('email')?.hasError('required')) {
+        <mat-error> Email is required </mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <div class="form-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Name" formControlName="password" />
+        @if(registrationForm.get('password')?.hasError('required')) {
+        <mat-error>Password is required</mat-error>
+        } @if(registrationForm.get('password')?.hasError('minlength')) {
+        <mat-error>Password must be at least 8 characters long</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button mat-flat-button color="accent" (click)="onSubmit()">
+        Submit
+      </button>
+    </div>
+  </form>
+</div>

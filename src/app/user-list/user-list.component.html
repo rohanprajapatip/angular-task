@@ -1,0 +1,12 @@
+<h1 class="title">User List</h1>
+<ul class="user-list">
+  @for(user of users;track user) {
+  <li (click)="logUserDetails(user)" class="user-data">
+    <img [src]="user.avatar" alt="User Avatar" />
+    <div>
+      <h3>{{ user.name }}</h3>
+      <p>{{ user.email }}</p>
+    </div>
+  </li>
+  }
+</ul>
